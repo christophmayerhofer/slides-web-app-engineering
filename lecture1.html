@@ -74,130 +74,21 @@
 
                 <section data-markdown>
                     <script type="text/template">
-                        ## Software project - facts
+                      ### Web Application Servers until 2010:
+                        - Server-side Rendering
+                        - Business-Logic runs on Server
+                        - Multithreaded
+                        - Stateful
+                        - CPU bound
 
-                        * Development of the new distribution system for an austrian passenger rail service provider
-                          * Austrian largest rail company
-                          * Successiv migration of the existing ticketing system(s)
-                        * Complex tariffs - highly dynamic content
-                        * Development speed critical for success
-                          * Changing requirements during development/testing
-                          * Iterative development process
-                        * Service infrastructure
-                          * Existing heterogenous service infrastructure (about 40 different services, with varying performance/availability)
+                      ### Web Application Servers Today:
+                        - Client-side Rendering
+                        - Business-Logic runs on Server and Client
+                        - Single- and Multithreaded
+                        - Stateless (Scalability)
+                        - I/O bound
                     </script>
                 </section>
-
-                <section data-markdown>
-                    <script type="text/template">
-                        ## Software project - facts
-
-                        * Passengers: 200 million/year
-                        * Passenger kilometers: 10 billion/year
-                        * Schedule requests: 10 million/month (~4/sec)
-                        * Suburban trains: 4000/day
-                        * Long-distance trains: 300/day
-
-                        <img height="300" src="images/train.png" alt="Train"> <img height="300" src="images/dog.png" alt="Train">
-                    </script>
-                </section>
-
-                <section>
-                    <h2>Components (Domain)</h2>
-                    <ul>
-                        <li>Product definition</li>
-                        <ul>
-                            <li>Internal administration tool</li>
-                            <li>Definition/composition of products</li>
-                                <ul>
-                                    <li>Validity period</li>
-                                    <li>Price</li>
-                                    <li>Time restrictions</li>
-                                    <li>Presale</li>
-                                    <li>...</li>
-                                </ul>
-                        </ul>
-                        <li>Data deployment</li>
-                        <li>Offer computation</li>
-                        <li>Internet</li>
-                        <ul>
-                            <li>Connection and offer inquiry (anonym)</li>
-                            <li>Ticket selection</li>
-                            <li>Payment/Booking</li>
-                            <li>Personalization (Registration, Login)</li>
-                        </ul>
-                    </ul>
-
-                    <img height="500" src="images/oebb-components.png" alt="Components">
-                </section>
-
-                <section>
-                    <h2>Components (KLOC)</h2>
-                    <ul>
-                        <li>Product definition
-                            <ul>
-                                <li>JavaScript: 45 KLOC</li>
-                                <li>Python: 20 KLOC</li>
-                            </ul>
-                        </li>
-                        <li>Data deployment
-                            <ul>
-                                <li>JavaScript: 30 KLOC</li>
-                                <li>Python: 5 KLOC</li>
-                            </ul>
-                        </li>
-                        <li>Offer computation
-                            <ul>
-                                <li>Haskell: 15 KLOC</li>
-                            </ul>
-                        </li>
-                        <li>Internet
-                            <ul>
-                                <li>JavaScript: 50 KLOC</li>
-                                <li>Python: 5 KLOC</li>
-                            </ul>
-                        </li>
-                        <li>Other infrastructur
-                            <ul>
-                                <li>Python: 30 KLOC</li>
-                            </ul>
-                        </li>
-                    </ul>
-
-                    <img width="350" src="images/oebb-kloc.png" alt="KLOC">
-                </section>
-
-                <section>
-                    <h2>Technology stack</h2>
-                    <img src="images/oebb-tech-stack.png" alt="Technology stack">
-                </section>
-
-                <section data-markdown>
-                    <script type="text/template">
-                        ## What framework should we use?
-
-                        * “If you have a hammer, everything looks like a nail”
-                        * Frameworks are overused
-                        * Frameworks implement and provide a large set of features – only a few are used
-                        * Developers don’t learn the basics because of abstractions
-                        * Large overhead for additions and changes
-                        * But: with frameworks you get similar output with respect to sourcecode and architecture
-
-                        -> Write your own framework! Your framework is tailored to your needs and will be much faster
-                    </script>
-                </section>
-
-                <section>
-                    <h2>Why we haven‘t used a framework</h2>
-                    <ul>
-                        <li>Specific requirements not met<br>by any framework</li>
-                        <li>Performance</li>
-                        <li>Development speed</li>
-                        <li>Learning curve</li>
-                    </ul>
-                    <img width="400" src="images/frameworks-super-simple.png" alt="Frameworks are super simple">
-                </section>
-
 
                 <section>
                     <section data-markdown>
@@ -239,6 +130,22 @@
                         <h2>Multi-threaded webservers</h2>
                         <img width="400" src="images/async-multi-threaded.png" alt="Async multi-threaded web-server">
                     </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ### Why threads are bad
+                            * Increased complexity:
+                              * Shared state and locks
+                              * Global locks decrease concurrency
+                              * Fine-grained locks increase code complexity
+                            * Context switching costs
+                            * Race conditions
+
+                            ### When threads are good
+                            * CPU-bound tasks
+                            * Support Multi-Core CPUs
+                            * Threads count == CPU cores count
+                        </script>
+                    </section>
                 </section>
 
                 <section>
@@ -248,12 +155,9 @@
 
                             * Event-driven
                              * also known as: asynchronous, non-blocking, single-threaded
-                             * Programms register callbacks for I/O
                              * Single thread of execution
                              * Cooperative multitasking between tasks
                              * Performs best for tasks with heavy I/O (web servers)
-
-                            * **Drawback**: programming more difficult - programms need a series of small callback functions (callback hell)
 
                             * Papers
                              * Dabek et.al.: Event-driven Programming for Robust Software
@@ -267,37 +171,51 @@
                 </section>
 
                 <section>
+                    <h2>Performance</h2>
+                    <img height="280" src="images/nginx-apache-reqs-sec.png" alt="Requests/sec">
+                    <img height="280" src="images/nginx-apache-memory.png" alt="Memory Usage">
+                    <small><a>http://blog.webfaction.com/2008/12/a-little-holiday-present-10000-reqssec-with-nginx-2/</a></small>
+                </section>
+
+                <section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## Event Notification:
+                            * Callbacks
+                              * Programmer register callback for I/O
+                              * When I/O finishes, the callback is executed
+                              * **Drawback**: programming more difficult - programms need a series of small callback functions (callback hell)
+
+                            * Coroutines
+                              * Functions which hold state between invocations (Generator-Functions)
+                              * "yield" Keyword
+                              * Can be used to handle asynchronous I/O
+                              * No callback hell
+                        </script>
+                    </section>
+                </section>
+
+                <section>
                     <section data-markdown>
                         <script type="text/template">
                             ## Implementations
 
-                            * Twisted-Web<br><small><http://twistedmatrix.com><br><http://krondo.com/?page_id=1327></small>
+                            * Twisted-Web (Python)<br><small><http://twistedmatrix.com><br><http://krondo.com/?page_id=1327></small>
                               * Event-loop: Reactor
                               * Callbacks/Errbacks (Deferreds)
 
-                            * Gevent<br><small><http://www.gevent.org></small>
+                            * Gevent (Python)<br><small><http://www.gevent.org></small>
                               * Greenlets
                               * Monky-patches the Python standard lib to make it non-blocking
+                              * Uses coroutines (yield)
                               * Programms feels like single-threaded/blocking – no callbacks needed!
 
-                            * Node.js (io.js)
+                            * Nginx, Lighttpd, ...
+
+                            * Node.js (C++, JavaScript)
                               * EventEmitter: Binds callback functions to events
                               * Promises/A+ may be used (then-able)
-
-                            * Nginx, Lighttpd, ...
                         </script>
-                    </section>
-
-                    <section>
-                        <h2>Reactor loop</h2>
-                        <img height="400" src="images/async-reactor-loop.png" alt="Reactor loop">
-                    </section>
-
-                    <section>
-                        <h2>Performance</h2>
-                        <img height="280" src="images/nginx-apache-reqs-sec.png" alt="Requests/sec">
-                        <img height="280" src="images/nginx-apache-memory.png" alt="Memory Usage">
-                        <small><a>http://blog.webfaction.com/2008/12/a-little-holiday-present-10000-reqssec-with-nginx-2/</a></small>
                     </section>
 
                     <section data-markdown>
@@ -321,25 +239,259 @@
                     </section>
 
                     <section>
-                        <h2>Simple gevent WSGI Server</h2>
+                        <h2>Gevent Greenlets Example</h2>
                         <pre>
-                            <code contenteditable>
+                            <code>
 import gevent.monkey
 # make all libraries cooperative
 gevent.monkey.patch_socket()
 
-def callback(env, start_response):
-    """
-    WSGI callback handler
-    """
-    start_response('200 OK', [('Content-Type', 'text/plain')])
-    return ['It works!']
+def get_url(url):
+    response = urllib2.urlopen(url)
+    result = response.read()
+    return json.loads(result)
 
-# start the server
-WSGIServer(('0.0.0.0', 8888), callback).serve_forever()
+thread1 = Greenlet.spawn(get_url, 'http://json-time.appspot.com/time.json')
+thread2 = Greenlet.spawn(get_url, 'http://www.inso.tuwien.ac.at')
+
+result = gevent.joinall([thread1, thread2])
                             </code>
                         </pre>
 
+                    </section>
+                </section>
+
+                <section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## Node.js
+
+                            * Asynchronous I/O Framework
+                            * Allows to build scalable network applications using JavaScript on the server-side
+                            * 50% in C++ on top of V8, 50% JavaScript
+                            * Handles thousands of concurrent connections with minimal overhead (CPU/Memory) on a single process
+                            * Obiquitous - one language to <span style="color:darkred"> RULE THEM ALL</span>!
+                            * Asynchronous callbacks with "EventEmitter"
+                        </script>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>EventEmitter Example</h2>
+                    HTTP Request:
+                    <pre>
+                        <code>
+var req = http.get('http://www.inso.tuwien.ac.at');
+
+req.on('response', (res) => {
+  console.log(`Got response: ${res.statusCode}`);
+  // consume response body
+  res.resume();
+});
+
+req.on('error', (e) => {
+  console.log(`Got error: ${e.message}`);
+});
+                        </code>
+                    </pre>
+                    Shortcut:
+                    <pre>
+                        <code>
+http.get('http://www.inso.tuwien.ac.at', (res) => {
+    console.log(`Got response: ${res.statusCode}`);
+    // consume response body
+    res.resume();
+}).on('error', (e) => {
+    console.log(`Got error: ${e.message}`);
+});
+                        </code>
+                    </pre>
+                </section>
+
+                <section>
+                    <h2>Custom EventEmitter</h2>
+                    <pre>
+                        <code>
+const EventEmitter = require('events');
+
+class MyEmitter extends EventEmitter {}
+
+const myEmitter = new MyEmitter();
+myEmitter.on('event', () => {
+  console.log('an event occurred!');
+});
+myEmitter.emit('event');
+                        </code>
+                    </pre>
+                </section>
+
+                <section>
+                    <h2>Browser Events</h2>
+                    <ul>
+                        <li>Browser's JavaScript API has no blocking functions</li>
+                        <li>Reason: Single-threaded (except WebWorkers)
+                        <li>Browsers also implement some sort of EventEmitters</li>
+                        <li>You register callbacks for events</li>
+                        <li>The callback is fired on I/O (user interaction)</li>
+
+                        <pre>
+                            <code>
+$("a").click(() => {
+    console.log("clicked");
+});
+
+$.ajax(..., (result) => {
+    console.log(result);
+});
+                            </code>
+                        </pre>
+                    </ul>
+                </section>
+
+                <section>
+                    <h2>Callbacks are bad</h2>
+                    <ul>
+                        <li>Code is hard to read and maintain</li>
+                        <li>No common callback-handling in various libraries</li>
+                    </ul>
+                    <pre>
+                        <code>
+let fs = require('fs');
+
+function main() {
+    fs.readFile('/etc/foobar', 'utf8', (err, content) => {
+        if (err) return console.log(err);
+
+        content = content + '\nAppended something!';
+
+        fs.writeFile('~/foobaz', content, (err) => {
+            if(err) return console.log(err);
+
+            console.log('Appended text!');
+        });
+    });
+}
+                        </code>
+                    </pre>
+                </section>
+
+                <section>
+                    <h2>Promises (Deferreds)</h2>
+                    <ul>
+                        <li>Very important concept in JavaScript (front- and back-end)</li>
+                        <li>Standardized with ES6 (Promises/A+ <small><a href="https://promisesaplus.com">https://promisesaplus.com</a></small>)</li>
+                        <li>"A promise represents the eventual result of an asynchronous operation."</li>
+                        <li>Allows method chaining with <code>then(callback)</code></li>
+                        <li>Promises are available since Node.js Version 4</li>
+                    </ul>
+                    <pre>
+                        <code  style="font-size: smaller">
+let fs = require('fs');
+
+function readFile() {
+    return new Promise((resolve, reject) => {
+        fs.readFile('/etc/foobar', 'utf8', (err, content) => {
+            if (err) reject(err);
+            content = content + '\nAppended something!';
+            resolve(content);
+    });
+}
+
+function writeFile(content) { ... }
+
+function main() {
+    readFile()
+        .then((content) => {
+            return writeFile(content);
+        }).catch((err) => {
+            console.log(err);
+        });
+}
+                        </code>
+                    </pre>
+                </section>
+
+                <section>
+                    <h2>Generator functions (ES6)</h2>
+                    <ul>
+                        <li>Ecmascript 6 allows to define generator functions</li>
+                        <li>Generator functions (*) are factories which returns an iterator</li>
+                        <li><code>yield</code> suspends until <code>next()</code> is called</li>
+                        <li>Works since Node.js Version 5 <small><a href="https://kangax.github.io/compat-table/es6/">https://kangax.github.io/compat-table/es6/</a></small></li>
+                    </ul>
+                    <pre>
+                        <code style="font-size: smaller">
+let fs = require('fs');
+
+function readFile() {
+    fs.readFile('/etc/foobar', 'utf8', (err, content) => {
+        if (err) throw err;
+        content = content + '\nAppended something!';
+        it.next(content);
+}
+
+function writeFile(content) { ... }
+
+function *main() {
+    try {
+        let content = yield readFile();
+        yield writeFile(content);
+    } catch(err) {
+        console.log(err);
+    }
+}
+
+let it = main();
+it.next();
+                        </code>
+                    </pre>
+                </section>
+
+                <section>
+                    <h2>Async/Await (ES7)</h2>
+                    <ul>
+                        <li>Syntactic sugar for generator functions with async calls</li>
+                        <li><code>async</code> functions wait for the execution of Promises</li>
+                        <li>Requires an ES7 transpiler (babel, traceur)</li>
+                        <li>We can now use <code>try/catch, for, while, ...</code></li>
+                    </ul>
+                    <pre>
+                        <code style="font-size: smaller">
+let fs = require('fs');
+
+async function readFile() {
+    return new Promise((resolve, reject) => {
+        fs.readFile('/etc/foobar', 'utf8', (err, content) => {
+            if (err) reject(err);
+            content = content + '\nAppended something!';
+            resolve(content);
+    });
+}
+
+async function writeFile(content) { ... }
+
+async function main() {
+    try {
+        let content = await readFile();
+        await writeFile(content);
+    } catch(err) {
+        console.log(err);
+    }
+}
+                        </code>
+                    </pre>
+                </section>
+
+                <section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## Howto to implement a Webserver with node.js
+
+                            * HTTP parser: Node http module
+                            * Middleware: Express.js (Static-file serving, Routing, Template-Engines, ...)
+                            * Dependency manager: npm (Node Package Manager)
+                            * Build system: grunt, gulp
+                        </script>
                     </section>
                 </section>
 

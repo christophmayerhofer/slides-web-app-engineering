@@ -283,7 +283,7 @@ body {
 	text-align: left;
 	font-size: 0.55em;
 	font-family: monospace;
-	line-height: 1.2em;
+	line-height: 1.1em;
 
 	word-wrap: break-word;
 
@@ -1332,5 +1332,3 @@ body {
 .zoomed .reveal .roll span:after {
 	visibility: hidden;
 }
-
-
