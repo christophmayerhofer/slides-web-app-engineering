@@ -351,8 +351,9 @@ $.ajax(..., (result) => {
                 <section>
                     <h2>Callbacks are bad</h2>
                     <ul>
+                        <li>Leads to Continuation-passing style (CPS)</li>
                         <li>Code is hard to read and maintain</li>
-                        <li>No common callback-handling in various libraries</li>
+                        <li>No common error handling in various libraries</li>
                     </ul>
                     <pre>
                         <code>
@@ -376,16 +377,41 @@ function main() {
                 </section>
 
                 <section>
-                    <h2>Promises (Deferreds)</h2>
-                    <ul>
-                        <li>Very important concept in JavaScript (front- and back-end)</li>
-                        <li>Standardized with ES6 (Promises/A+ <small><a href="https://promisesaplus.com">https://promisesaplus.com</a></small>)</li>
-                        <li>"A promise represents the eventual result of an asynchronous operation."</li>
-                        <li>Allows method chaining with <code>then(callback)</code></li>
-                        <li>Promises are available since Node.js Version 4</li>
-                    </ul>
-                    <pre>
-                        <code  style="font-size: smaller">
+                    <section>
+                        <h2>Promises (Deferreds)</h2>
+                        <ul>
+                            <li>Very important concept in JavaScript (front- and back-end)</li>
+                            <li>"A promise represents the eventual result of an asynchronous operation."</li>
+                            <li>Various different implementations exist (jQuery, Q, Angular, ...)</li>
+                            <li>Standardized with ES6 (Promises/A+ <small><a href="https://promisesaplus.com">https://promisesaplus.com</a></small>)</li>
+                            <li>Node.js supports ES6 Promises since Version 4</li>
+                            <li>Allows method chaining with <code>Promise.then(onFulfilled, onRejected)</code></li>
+                            <li>3 States: pending, fulfilled, rejected</li>
+                        </ul>
+                    </section>
+
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## The Promise Interface
+
+                            * <code>new Promise(function(resolve, reject) { ... })</code>
+                              * Constructor to create a new Promise object
+                              * <code>resolve()</code> resolves the Promise
+                              * <code>reject()</code> rejects the Promise
+
+                            * <code>Promise.then(onFulfilled, onRejected)</code>
+                              * Returns a Promise object
+
+                            * <code>Promise.catch(onRejected)</code>
+                              * Short for <code>promise.then(undefined, onRejected)</code>
+                              * Returns a Promise object
+                        </script>
+                    </section>
+
+                    <section>
+                        <h2>Node.js Example</h2>
+                        <pre>
+                            <code  style="font-size: smaller">
 let fs = require('fs');
 
 function readFile() {
@@ -407,8 +433,75 @@ function main() {
             console.log(err);
         });
 }
-                        </code>
-                    </pre>
+                            </code>
+                        </pre>
+                    </section>
+
+                    <section>
+                        <h2>But ... (jQuery)</h2>
+                        <pre>
+                            <code style="font-size: smaller">
+UserDao.getUser = function() {
+    var deferred = new $.Deferred();
+    this.rpc.invoke('get_user')
+        .done(function(user) {
+            self.unpack(user)
+                .done(function(user) {
+                    app.model.upgrade('user', new User(user))
+                        .done(function(upgradedUser) {
+                            app.dao.user.updateUser(upgradedUser)
+                                .done(function(updatedUser) {
+                                    deferred.resolve(new User(updatedUser));
+                                })
+                                .fail(function(error) {
+                                    deferred.reject(error);
+                                });
+                            }
+                        })
+                        .fail(function(error) {
+                            deferred.reject(error);
+                        });
+                })
+                .fail(function(error) {
+                    deferred.reject(error);
+                });
+        })
+        .fail(function (error) {
+            log.error('Get user failed: %s', JSON.stringify(error));
+            deferred.reject(error);
+        });
+
+    return deferred.promise();
+};
+                            </code>
+                        </pre>
+                    </section>
+
+                    <section>
+                        <h2>Should be rewritten to:</h2>
+                        <pre>
+                            <code style="font-size: smaller">
+UserDao.getUser = function() {
+    return this.rpc.invoke('get_user')
+        .done(function(user) {
+            return self.unpack(user);
+        })
+        .done(function(user) {
+            return app.model.upgrade('user', new User(user));
+        })
+        .done(function(upgradedUser) {
+            return app.dao.user.updateUser(upgradedUser);
+        })
+        .done(function(updatedUser) {
+            return new User(updatedUser);
+        });
+        .fail(function(error) {
+            return error;
+        });
+};
+                            </code>
+                        </pre>
+                    </section>
                 </section>
 
                 <section>
@@ -450,9 +543,10 @@ it.next();
                 <section>
                     <h2>Async/Await (ES7)</h2>
                     <ul>
+                        <li>Proposal currently in Stage 3 "Candidate"</li>
                         <li>Syntactic sugar for generator functions with async calls</li>
                         <li><code>async</code> functions wait for the execution of Promises</li>
-                        <li>Requires an ES7 transpiler (babel, traceur)</li>
+                        <li>Requires an ES7 transpiler <small>(src-2-src-compiler, for example babel, traceur)</small></li>
                         <li>We can now use <code>try/catch, for, while, ...</code></li>
                     </ul>
                     <pre>
@@ -485,38 +579,91 @@ async function main() {
                 <section>
                     <section data-markdown>
                         <script type="text/template">
-                            ## Howto to implement a Webserver with node.js
+                            ## How to implement a node.js RESTful Webserver in 5 Minutes
 
-                            * HTTP parser: Node http module
+                            * Install a recent version of Node.js with <a href="https://github.com/creationix/nvm">nvm</a>:
+                              <pre><code>nvm install 5.0</code></pre>
+                            * Dependency manager: npm (Node Package Manager)<br>
+                              <pre><code>npm init</code></pre>
+                            * HTTP parser: Node.js http module
                             * Middleware: Express.js (Static-file serving, Routing, Template-Engines, ...)
-                            * Dependency manager: npm (Node Package Manager)
-                            * Build system: grunt, gulp
+                              <pre><code>npm install --save express</code></pre>
+                            * Optional: Build system with grunt or gulp
                         </script>
+                    </section>
+
+                    <section>
+                        <h2>How to implement a node.js RESTful Webserver in 5 Minutes</h2>
+
+                        <pre><code>
+var express = require('express');
+var bodyParser = require('body-parser');
+
+var app = express();
+var router = express.Router();
+
+app.use(bodyParser.json());
+app.use(express.static('htdocs'));
+app.use('/api', router);
+
+router.use(function(req, res, next) {
+    console.log(req.method + " " + req.url);
+    next(); // go to next route
+});
+
+app.listen(8080, function () {
+    console.log('Now listening on port 8080!');
+});
+                        </pre></code>
+                    </section>
+
+                    <section>
+                        <h2>How to implement a node.js RESTful Webserver in 5 Minutes</h2>
+
+                        <pre><code>
+router.route('/users')
+    // create a user: POST http://localhost:8080/api/users
+    .post(function(req, res) {
+        var user = saveUser({name: req.body.name});
+        res.json(user);
+    })
+    // get all users: GET http://localhost:8080/api/users
+    .get(function(req, res) {
+        var users = getUsers();
+        res.json(users);
+    });
+
+router.route('/users/:userId')
+    // get a user: GET http://localhost:8080/api/user/1
+    .get(function(req, res) {
+        var user = getUser(req.params.userId);
+        return res.json(user);
+    });
+                        </pre></code>
                     </section>
                 </section>
 
                 <section>
-                    <section data-markdown>
-                        <script type="text/template">
-                            ## REST (represential state transfer)
-
-                            * REST is a architectural style/pattern, and was used to design HTTP
-                            * Steve Vinoski: Serendipitous Reuse<br><small><http://computer.org/portal/pages/dsonline/2008/02/w1tow.xml></small>
-                            * HTTP is often used in a non-RESTful way (because of :80)
-                              * SOAP is protocol agnostic - HTTP features can&apos;t be used
-                              * SOAP uses POSTs (no caching)
-                              * Endpoints, no URIs (links)
-                            * 5 major concepts of REST:
-                              * Resources
-                              * Representations
-                              * Operations
-                              * Hypermedia
-                              * Statelessness
-                        </script>
+                    <section>
+                        <h2>REST (represential state transfer)</h2>
+                        <div style="width: 60%; float: left">
+                            <ul>
+                                <li>REST is a architectural style/pattern, and was used to design HTTP</li>
+                                <li>Steve Vinoski: Serendipitous Reuse<br><small><a href="http://computer.org/portal/pages/dsonline/2008/02/w1tow.xml">http://computer.org/portal/pages/dsonline/2008/02/w1tow.xml</small></a></li>
+                                <li>HTTP is often used in a non-RESTful way (because of :80)</li>
+                                <ul>
+                                    <li>SOAP is protocol agnostic - HTTP features can&apos;t be used</li>
+                                    <li>SOAP uses POSTs (no caching)</li>
+                                    <li>Endpoints, no URIs (links)</li>
+                                </ul>
+                                <li>5 major concepts of REST: Resources, Representations, Operations, Hypermedia, Statelessness</li>
+                            </ul>
+                        </div>
+                        <div style="width: 40%; float: right">
+                            <img src=images/rest-vs-soap.png></img>
+                        </div>
                     </section>
-                </section>
 
-                <section>
                     <section data-markdown>
                         <script type="text/template">
                             ## Resources
@@ -529,9 +676,7 @@ async function main() {
 /pds/e/import/stops </pre>
                         </script>
                     </section>
-                </section>
 
-                <section>
                     <section data-markdown>
                         <script type="text/template">
                             ## Representations
@@ -545,9 +690,7 @@ Accept: application/json
                             * If the server doesnt support the MIME type it can return an HTTP error
                         </script>
                     </section>
-                </section>
 
-                <section>
                     <section data-markdown>
                         <script type="text/template">
                             ## Operations
@@ -563,9 +706,7 @@ Accept: application/json
                             * At least one operation must be supported for a given resource
                         </script>
                     </section>
-                </section>
 
-                <section>
                     <section data-markdown>
                         <script type="text/template">
                             ## Hypermedia
@@ -576,9 +717,7 @@ Accept: application/json
                             * The client changes its application state using links (as in traditional websites)
                         </script>
                     </section>
-                </section>
 
-                <section>
                     <section data-markdown>
                         <script type="text/template">
                             ## Statelessness
@@ -590,9 +729,7 @@ Accept: application/json
                               * Proxy-Caches
                         </script>
                     </section>
-                </section>
 
-                <section>
                     <section data-markdown>
                         <script type="text/template">
                             ## Lessions learned
