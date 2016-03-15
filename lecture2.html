@@ -46,220 +46,206 @@
                     </p>
                 </section>
 
-                <section data-markdown>
-                    <script type="text/template">
-                        ## Pragmatic Web-Engineering: <br>Lessons learned
-
-                        * Build (and reuse) your own tools and libraries
-                         * Wisely choose third-party libs
-                        * Write reusable code (DRY)
-                        * Write maintainable code (Coding Guides, JSLint, ...)
-                        * Create a prototype:
-                         * Don&#039;t assume it, prove it
-                         * Learning by doing
-                        * Every build should produce a working product (CI)
-                          <small><a>http://www.martinfowler.com/articles/continuousIntegration.html</a></small>
-                        * Automated UI-tests take a lot of time
-                        * Integrate the documentation in your code
-                    </script>
-                </section>
-
-                <!-- <section>
-                    <h2>Framework Magic</h2>
-
-                    <img width="50%" src="images/jsf-lifecycle.gif" alt="JSF Lifecycle">
-                </section> -->
-
-                <section data-markdown>
-                    <script type="text/template">
-                        ## Web-Frameworks
-
-                        * Provide libraries for database access (ORM), templating, user-interface widgets, form validation, session management, data binding, I18N, testing, …
-                        * Classic Web-Frameworks: Request-Response-Cycles
-                        * Since ~2002
-                          * Microsoft ASP.NET (Active Server Pages) since 2002
-                          * Java Server Faces (JSF) since 2004
-                          * Ruby on Rails since 2006
-                          * JBoss Seam since 2006
-                        * Advantages
-                          * Development speed
-                          * Code reuse (from Framework libraries)
-                          * Same output from different developers
-                          * Tested (security)
-                          * User community
-                    </script>
-                </section>
-
                 <section>
-                    <h2>History</h2>
-                    <img src="images/webframeworks.png" alt="Web frameworks">
-                </section>
+                    <section>
+                            <h2>Web-Frameworks</h2>
 
-                <section>
-                        <h2>Rich Internet Applications - Features</h2>
-
-                        <ul style="font-size:85%">
-                            <li>Rich interactions<br>(for example drag & drop)</li>
-                            <li>Access to the local file system</li>
-                            <li>Local browser database</li>
-                            <li>Client-side business code</li>
-                            <li>Client-side validation</li>
-                            <li>Animations</li>
-                            <li>Visual feedback</li>
-                            <li>Data encryption</li>
-                            <li>Zero-downtime deployment</li>
-                            <li>Offline applications</li>
-                            <li>Multimedia</li>
-                        </ul>
-
-                        <img src="images/ria.png" alt="Rich Internet Application Features">
-                </section>
-
-                <section data-markdown>
-                    <script type="text/template">
-                        ## Rich Internet Applications - Trends
-
-                        * HTML5 is the leading standard for RIAs
-                        * Flash & Silverlight
-                          * Adobe announces to more aggressively contribute to HTML5 (on mobile devices)<br>
-                            <small><http://blogs.adobe.com/conversations/2011/11/flash-focus.html></small>
-                          * Windows 8 applications with JavaScript and HTML5<br>
-                            <small><http://www.zdnet.com/blog/microsoft/will-there-be-a-silverlight-6-and-does-it-matter/11180></small>
-                          * Apple: Thoughts on Flash<br>
-                            <small><http://www.apple.com/hotnews/thoughts-on-flash/></small>
-                        * More and more JavaScript based web frameworks
-                        * Browser (speed) war
-                        * New HTML5 browser features on-the-fly
-                    </script>
-                </section>
-
-                <section>
-                        <h2>Web Standards</h2>
-                        <img src="images/standards.png" alt="Web Standards">
-                </section>
-
-                <section>
-                    <h2>WHATWG vs. W3C</h2>
-
-                    <table>
-                        <tr>
-                            <td>
+                            <ul style="font-size:85%">
+                                <li>Provide libraries for database access (ORM), templating, user-interface widgets, form validation, session management, data binding, I18N, testing, …</li>
+                                <li>Classic Web-Frameworks: Request-Response-Cycles</li>
+                                <li>Since ~2002</li>
                                 <ul>
-                                    <li>WHATWG: Web Hypertext Applications Technology Working Group</li>
-                                    <li>Public mailinglist announced 2004 by Opera, Mozilla, Apple</li>
-                                    <li>Unofficial, open collaboration of browser manufacturers and interested parties <span style="font-size:80%">(Ian Hickson/Google, head of WHATWG, editor)</span></li>
-                                    <li>HTML living standard (continuous integration of new features as required)</li>
-                                    <li>Focus on rich internet applications, accelerate development of web standards</li>
+                                    <li>Microsoft ASP.NET (Active Server Pages) since 2002</li>
+                                    <li>Java Server Faces (JSF) since 2004</li>
+                                    <li>Ruby on Rails since 2006</li>
+                                    <li>JBoss Seam since 2006</li>
                                 </ul>
-                            </td>
-                            <td style="vertical-align:top">
-                                <ul>
-                                    <li>W3C: World Wide Web Consortium</li>
-                                    <li>Founded 1994 by Tim Berners-Lee</li>
-                                    <li>About ~400 members</li>
-                                    <li>Snapshot of current HTML standards, final specification until 2014.</li>
-                                    <li>Draft-Draft-Draft-Snapshot model</li>
-                                    <li>Focus on standardization for all manufacturers, W3C process proves interoperability</li>
-                                </ul>
-                            </td>
-                        </tr>
-                    </table>
-
-                </section>
-
-                <section data-markdown>
-                    <script type="text/template">
-                        ## Example: Web Notifications
-
-                        * May 2010: Chrome 5 supports prefexed version of the Notification API
-                        * March 2011: First W3C Working Draft
-                        * May 2012: First WHATWG Draft
-                        * June 2012: W3C Working Draft #14
-                        * July 2012: Safari 6 adds Web Notification API
-                        * September 2012: Chrome 22 supports full Web Notification API
-                        * May 2013: Spec merged from WHATWG to W3C
-                        * June 2013: Firefox 22 supports full Web Notification API
-                        * August 2013: Spec merged from WHATWG to W3C
-                        * September 2013: W3C Last Call Working Draft
-
-                    </script>
-                </section>
-
-                <section data-markdown>
-                    <script type="text/template">
-                        ## HTML5 History
-
-                        * 1997: W3C HTML 4.0
-                        * 1999: W3C HTML 4.1
-                        * HTML 4.1 -> XHTML 1.0 (XML-based)
-                        * XHTML 1.1/2.0 (not backward compatible)
-                        * 2004: WHATWG first draft for HTML5
-                        * 2006: W3C HTML5 working group with WHATWG HTML5 fork
-                        * 2007: Corporate development of W3C and WHATWG on HTML5
-                        * 2009: XHTML 2.0 working group end of life
-                        * 2011: WHATWG and W3C discontinued collaboration
-                        * 2013: HTML5 Call for Review
-                        * 2014: Final HTML5 Recommendation
-                    </script>
-                </section>
-
-                <section>
-                    <h2>The HTML5 Universe</h2>
-                    <img width="70%" src="images/html5-universe.png">
-                </section>
-
-                <section>
-                    <h2>HTML5 Elements</h2>
-
-                    <ul>
-                        <li>Semantic markup
-                            <ul>
-                                <li>Structure<br><code><small>&lt;nav&gt;, &lt;article&gt;, &lt;figure&gt;, &lt;summary&gt;, &lt;section&gt;, &lt;header&gt;, &lt;footer&gt;, ...</small></code></li>
-                                <li>Text<br><code><small>&lt;cite&gt;, &lt;abbr&gt;, &lt;code&gt;, ...</small></code></li>
-                                <li>New input types
-                                    <ul>
-                                        <li><input type="date"></li>
-                                        <li><input type="color"></li>
-                                        <li><input type="search"></li>
-                                    </ul>
-                                </li>
-                                <li>Placeholder <input type="text" placeholder="Enter your name"/></li>
                             </ul>
-                        </li>
-                        <li>Multimedia elements<br><code><small>&lt;video&gt;, &lt;audio&gt;, ...</small></code></li>
-                    </ul>
+
+                            <img width="40%" src="images/jsf-lifecycle.gif" alt="JSF Lifecycle">
+                    </section>
+
+                    <section>
+                            <h2>Web-Frameworks</h2>
+
+                            <ul>
+                                <li>Advantages</li>
+                                <ul>
+                                    <li>Development speed</li>
+                                    <li>Code reuse (from Framework libraries)</li>
+                                    <li>Same output from different developers</li>
+                                    <li>Tested (security)</li>
+                                    <li>User community</li>
+                                </ul>
+                            </ul>
+                    </section>
+
+                    <section>
+                        <h2>History</h2>
+                        <img src="images/history-of-web-frameworks-timeline.png" alt="Web frameworks">
+                        <small><a href="https://github.com/mraible/history-of-web-frameworks-timeline">https://github.com/mraible/history-of-web-frameworks-timeline</a></small>
+                    </section>
                 </section>
 
                 <section>
-                    <h2>JavaScript</h2>
-                    <div style="float:left; width: 70%;">
-                    <ul>
-                        <li>The world&#039;s most misunderstood programming language<br>
-                            <small><a>http://javascript.crockford.com/javascript.html</a></small>
-                        </li>
-                        <li>
-                            JavaScript is the web&#039;s "virtual machine"<br>
-                            <blockquote>We had always thought that Java&#039;s JVM would be the VM of the web, but it turns out that it's JavaScript. JavaScript's parser does a more efficient job... than the JVM&#039;s bytecode verifier.</blockquote>
-                            <p class="attribution">&mdash; <a href="http://www.hanselman.com/blog/JavaScriptIsAssemblyLanguageForTheWebPart2MadnessOrJustInsanity.aspx">Doug Crockford</a></p>
-                        </li>
-                    </ul>
-                    </div>
-                    <div style="float: left; width: 30%;">
-                        <img width="200" src="images/xkcd-mac-pc.png" alt="XKCD Mac-PC">
-                    </div>
-                    <div style="clear: both;"/>
+                    <section>
+                            <h2>Rich Internet Applications - Features</h2>
 
-                    <!-- <script type="text/template">
-                        ## JavaScript
+                            <ul style="font-size:85%">
+                                <li>Rich interactions<br>(for example drag & drop)</li>
+                                <li>Access to the local file system</li>
+                                <li>Local browser database</li>
+                                <li>Client-side business code</li>
+                                <li>Client-side validation</li>
+                                <li>Animations</li>
+                                <li>Visual feedback</li>
+                                <li>Data encryption</li>
+                                <li>Zero-downtime deployment</li>
+                                <li>Offline applications</li>
+                                <li>Multimedia</li>
+                            </ul>
 
-                        * The world&#039;s most misunderstood programming language
-                          <small><a>http://javascript.crockford.com/javascript.html</a></small>
-                        * JavaScript is the web&#039;s "virtual machine"
+                            <img src="images/ria.png" alt="Rich Internet Application Features">
+                    </section>
 
-                        <blockquote>We had always thought that Java&#039;s JVM would be the VM of the web, but it turns out that it's JavaScript. JavaScript's parser does a more efficient job... than the JVM&#039;s bytecode verifier.</blockquote>
-                        <p class="attribution">&mdash; <a href="http://www.hanselman.com/blog/JavaScriptIsAssemblyLanguageForTheWebPart2MadnessOrJustInsanity.aspx">Doug Crockford</a></p>
-                        <div><img width="200" src="images/xkcd-mac-pc.png" alt="XKCD Mac-PC"></div>
-                    </script>-->
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## Rich Internet Applications - Trends
+
+                            * HTML5 is the leading standard for RIAs
+                            * Flash & Silverlight
+                              * Adobe announces to more aggressively contribute to HTML5 (on mobile devices)<br>
+                                <small><http://blogs.adobe.com/conversations/2011/11/flash-focus.html></small>
+                              * Windows 8 applications with JavaScript and HTML5<br>
+                                <small><http://www.zdnet.com/blog/microsoft/will-there-be-a-silverlight-6-and-does-it-matter/11180></small>
+                              * Apple: Thoughts on Flash<br>
+                                <small><http://www.apple.com/hotnews/thoughts-on-flash/></small>
+                            * More and more JavaScript based web frameworks
+                            * Browser (speed) war
+                            * New HTML5 browser features on-the-fly
+                        </script>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                            <h2>Web Standards</h2>
+                            <img src="images/standards.png" alt="Web Standards">
+                    </section>
+
+                    <section>
+                        <h2>WHATWG vs. W3C</h2>
+
+                        <table>
+                            <tr>
+                                <td>
+                                    <ul>
+                                        <li>WHATWG: Web Hypertext Applications Technology Working Group</li>
+                                        <li>Public mailinglist announced 2004 by Opera, Mozilla, Apple</li>
+                                        <li>Unofficial, open collaboration of browser manufacturers and interested parties <span style="font-size:80%">(Ian Hickson/Google, head of WHATWG, editor)</span></li>
+                                        <li>HTML living standard (continuous integration of new features as required)</li>
+                                        <li>Focus on rich internet applications, accelerate development of web standards</li>
+                                    </ul>
+                                </td>
+                                <td style="vertical-align:top">
+                                    <ul>
+                                        <li>W3C: World Wide Web Consortium</li>
+                                        <li>Founded 1994 by Tim Berners-Lee</li>
+                                        <li>About ~400 members</li>
+                                        <li>Snapshot of current HTML standards, final specification until 2014.</li>
+                                        <li>Draft-Draft-Draft-Snapshot model</li>
+                                        <li>Focus on standardization for all manufacturers, W3C process proves interoperability</li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </table>
+
+                    </section>
+
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## Example: Web Notifications
+
+                            * May 2010: Chrome 5 supports prefexed version of the Notification API
+                            * March 2011: First W3C Working Draft
+                            * May 2012: First WHATWG Draft
+                            * June 2012: W3C Working Draft #14
+                            * July 2012: Safari 6 adds Web Notification API
+                            * September 2012: Chrome 22 supports full Web Notification API
+                            * May 2013: Spec merged from WHATWG to W3C
+                            * June 2013: Firefox 22 supports full Web Notification API
+                            * August 2013: Spec merged from WHATWG to W3C
+                            * September 2013: W3C Last Call Working Draft
+
+                        </script>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>JavaScript</h2>
+                        <div style="float:left; width: 70%;">
+                        <ul>
+                            <li>The world&#039;s most misunderstood programming language<br>
+                                <small><a>http://javascript.crockford.com/javascript.html</a></small>
+                            </li>
+                            <li>
+                                JavaScript is the web&#039;s "virtual machine"<br>
+                                <blockquote>We had always thought that Java&#039;s JVM would be the VM of the web, but it turns out that it's JavaScript. JavaScript's parser does a more efficient job... than the JVM&#039;s bytecode verifier.</blockquote>
+                                <p class="attribution">&mdash; <a href="http://www.hanselman.com/blog/JavaScriptIsAssemblyLanguageForTheWebPart2MadnessOrJustInsanity.aspx">Doug Crockford</a></p>
+                            </li>
+                        </ul>
+                        </div>
+                        <div style="float: left; width: 30%;">
+                            <img width="200" src="images/xkcd-mac-pc.png" alt="XKCD Mac-PC">
+                        </div>
+                        <div style="clear: both;"/>
+                    </section>
+
+                    <section>
+                        <h2>JavaScript - The Bad Parts</h2>
+
+                        <ul>
+                            <li>Type Coercion: Rules for implicit type conversion</li>
+                        </ul>
+                            <pre><code>
+"1" == true // -> true
+"42" == true // -> false
+
+1. true -> 1
+2. "42" -> 42
+3. 1 != 42
+                            </code></pre>
+                        <ul>
+                            <li><code>this</code>: Binding based on how a function is called</li>
+                            <ul>
+                                <li>Function call: <code>foo()</code></li>
+                                <li>Object literals: <code>obj.foo()</code></li>
+                                <li>Constructor: <code>new Foo()</code></li>
+                                <li><code>.call(), .apply(), .bind()</code></li>
+                            </ul>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2>JavaScript - The Bad Parts</h2>
+
+                        <ul>
+                            <li>Function scope: Variables are visible everywhere in the function</li>
+                            <li>Variable Hoisting: Variable declarations are processed before any code is executed</li>
+                        </ul>
+                            <pre><code>
+function foo() {
+    x = 2; // x, y and z already declared
+
+    for (var i = 0; i < x; i++) {
+        var z = 3;
+    }
+
+    var x;
+}
+                            </code></pre>
+                    </section>
                 </section>
 
                 <section data-markdown>
@@ -279,229 +265,403 @@
                     </script>
                 </section>
 
+                <section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## JSON
+                            * First specified by Douglas Crockford in 2001
+                            * Language-Independent
+                            * Not a subset of JavaScript (because of some allowed special characters)
+                            * Standardized with ECMA-404 Standard
+
+                            * Used for Client-Server and Server-Server Communication
+                              * AJAJ (Asynchronous JavaScript and JSON)
+                              * MIME-Type "application/json"
+                              * REST
+                              * JSON-RPC
+
+                            * Other Use-Cases
+                              * Configuration files (YAML)
+                              * JSON Schema
+                              * GeoJSON (Google Maps API)
+                              * JWT
+                        </script>
+                    </section>
+
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## JWT - JSON Web Token
+
+                            * Header (required)
+                            <pre><code>{
+    "typ": "JWT",
+    "alg": "RS256" // SHA-256 + RSA
+}
+                            </code></pre>
+                            * Payload (required)
+                            <pre><code>{
+  "sub": "1234567890", // subject
+  "iss": "", // issuer
+  "name": "John Doe",
+  "roles": ["clerk"],
+  "exp": 1458077395, // expiration time
+}
+                            </code></pre>
+                            * Signature (Message Authentication Code, optional):
+                              * Base64(Header) + "." + Base64(Payload)
+                              * Hashed and Encrypted
+                        </script>
+                    </section>
+
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## JWT - JSON Web Token
+
+                            * RFC 7519
+                            * Can be used to pass authentication and authorization infos (claims) between an identity provider and a service provider
+                            * Allows stateless backends
+                            * Client is responsible for storing the JWT (Mobile Apps, Web Apps)
+                            * JWT is included in each AJAX-Request
+                            * Can be used with CORS
+                        </script>
+                    </section>
+                </section>
+
+                <section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## JavaScript - ECMAScript 6 (ES6)
+
+                            * Finalized in June 2015 (ECMAScript 2015)
+                            * http://es6-features.org
+                            * Inheritance
+                            * Modules
+                            * Default parameters, rest parameters
+                            * Template strings
+                            * Iterators and generator functions
+                            * ...
+                        </script>
+                    </section>
+
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## Current ES6 Browser Support
+
+                            <img src="images/es6-compat-table.png">
+                            <small><https://kangax.github.io/compat-table/es6/></small>
+                        </script>
+                    </section>
+
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## ES6 -> ES5 Transpilers
+
+                            * Transpiler = Source-2-Source Compiler
+                            * Closure Compiler
+                            * Traceur Compiler
+                            * Babel
+                        </script>
+                    </section>
+
+                    <section>
+                        <h2>Transpiler Example: Inheritance</h2>
+                        How prototypical inheritance works in JavaScript:
+
+                        <img src="images/prototype-chain.png">
+                    </section>
+
+                    <section>
+                        <h2>Transpiler Example: Inheritance</h2>
+                        <div style="width: 50%; float: left">
+                            ES5
+                            <pre>
+                                <code>
+    function Vehicle() {};
+    Vehicle.prototype.toString = function() {
+        console.log(this.name);
+    }
+
+    function Car() {};
+
+    // create prototype chain
+    function F() {};
+    F.prototype = Vehicle;
+    Car.prototype = new F();
+
+    var c = new Car();
+    c.toString();
+    // c.__proto__ -> Vehicle.prototype
+                                </code>
+                            </pre>
+                        </div>
+                        <div style="width: 50%; float: right">
+                            ES6
+                            <pre>
+                                <code>
+    class Vehicle {
+        toString() {
+            console.log(this.name);
+        }
+    }
+
+    class Car extends Vehicle {}
+    var c = new Car();
+    c.toString();
+                                </code>
+                            </pre>
+                        </div>
+                    </section>
+
+                    <section>
+                        <h2>Transpiler Example: Inheritance</h2>
+                        Transpiled output of Traceur:
+                        <pre>
+                            <code>
+    $traceurRuntime.ModuleStore.getAnonymousModule(function() {
+      "use strict";
+      var Vehicle = function() {
+        function Vehicle() {}
+        return ($traceurRuntime.createClass)(Vehicle, {toString: function() {
+            console.log(this.name);
+          }}, {});
+      }();
+      var Car = function($__super) {
+        function Car() {
+          $traceurRuntime.superConstructor(Car).apply(this, arguments);
+        }
+        return ($traceurRuntime.createClass)(Car, {}, {}, $__super);
+      }(Vehicle);
+      var c = new Car();
+      c.toString();
+      return {};
+    });
+    //# sourceMappingURL=traceured.js.map
+                            </code>
+                        </pre>
+                        ... Source Maps come to rescue
+                    </section>
+                </section>
+
+                <section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## How SPAs work - the bootstrap process
+
+                            * Single HTML page, containing:
+                            * HTML header and declarations
+                            * HTML body containing the page header and footer
+                            * Feature detection code (JavaScript, cookies)
+                            * JavaScript bootstrap code
+                            * The HTML page loads the CSS and JavaScript resources, which contains the application code
+                            * A JavaScript callback function is the entry-point to render the application
+                        </script>
+                    </section>
+
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## Pros of plain JavaScript<br> web-apps
+
+                            * Strong seperation of frontend and backend (necessarily)
+                            * Frontend and backend can be developed independenly
+                            * “Headless” testing of the backend
+                            * Reuse of web-services (for other distribution channels)
+                            * Development in the interpreter language of the browser (no abstraction, no cross-compiles)
+                            * High learning curve (JavaScript per se)
+                            * Numerous existing JavaScript libraries
+                            * All features of HTML/JavaScript are available, no barriers because of frameworks
+                            * HTML is rendered in browser (DOM manipulation) -> easy to debug and deploy (static files – only a browser referesh away :)
+                        </script>
+                    </section>
+
+                    <section>
+                        <h2>Develop-build-deploy cycles</h2>
+                        <img width="600px" src="images/code-is-compiling.png" alt="Code is compiling">
+                    </section>
+
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## Develop-build-deploy cycles
+
+                            * Building and deploying takes a lot of time, especially for developers where the build is a synchronous task
+                            * A lot of frameworks with inconvenient and long-running build and deployment jobs exist
+                            * This results in less development speed and loss in productivity
+                            * With HTML/JavaScript the build/deployment task is to press the  reload button in the browser
+                            * No byte compilation necessary
+                            * No build artefacts necessary
+                            * No restart of the application necessary
+                        </script>
+                    </section>
+                </section>
+
+                <section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## jQuery
+
+                            * Developed by John Resig<br><small><http://ejohn.org></small>
+                            * About ~30 KB compressed
+                            * Large community<br><small><http://trends.builtwith.com/javascript/JQuery></small>
+                            * De facto standard in web development
+                            * Extendable with plug-ins
+                            * jQuery object: $
+                            * Method chaining<br><small><http://importantshock.wordpress.com/2009/01/18/jquery-is-a-monad/></small>
+                            * Selectors, attributes, traversing, manipulation, CSS, events, effects, ajax, utilities
+                        </script>
+                    </section>
+
+                    <section>
+                        <h2>jQuery Usage-Trends</h2>
+                        <img src="images/jquery-usage-trends.png" alt="jQuery Usage Trends">
+                    </section>
+
+                    <section>
+                        <h2>jQuery - Code Example</h2>
+                        <pre>
+                            <code contenteditable>
+                                $(&quot;#divTest2:visible&quot;)
+                                .text(&quot;Hello World&quot;)
+                                .removeClass(&quot;blue&quot;)
+                                .addClass(&quot;bold&quot;)
+                                .css(&quot;background-color&quot;, &quot;red&quot;)
+                                .click(function() {
+                                alert(&quot;Handler for .click() called.&quot;);
+                                })
+                                .wrap(&quot;&lt;div&gt;&quot;);
+                                 </code>
+                        </pre>
+                    </section>
+                </section>
+
                 <section data-markdown>
                     <script type="text/template">
-                        ## JavaScript - ECMAScript 6
+                        ## Components
 
-                        * ECMAScript 6 is coming
-                        * Inheritance
-                        * Modules
-                        * Default parameters, rest parameters
-                        * Map, Set, WeakMap
-                        * Iterators and generator functions
+                        * HTML was not designed to develop components
+                        * Object-oriented Model
+                        * Isolation
+                        * Reuse
                     </script>
                 </section>
 
                 <section>
-                    <h2>ÖBB Ticketing</h2>
-                    <img width="750" src="images/oebb-ticketing-screenshot.png" alt="ÖBB Ticketing Screenshot">
-                </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## Web application performance
 
-                <section data-markdown>
-                    <script type="text/template">
-                        ## How it works - bootstrap process
+                            * Books you must read:
+                                * Steve Souders: High Performance Web Sites, O‘Reilly, 2007.
+                                * Steve Souders: Even Faster Web Sites, O‘Reilly, 2009.
+                            * Slow sites:
+                                * Decreased revenues
+                                * Frustrated users
+                                * Negative brand perceptions
+                            * Basic rules:
+                                * Make fewer HTTP requests
+                                * Reduce the content-size
+                        </script>
+                    </section>
 
-                        * Single HTML page, containing:
-                        * HTML header and declarations
-                        * HTML body containing the page header and footer
-                        * Feature detection code (JavaScript, cookies)
-                        * JavaScript bootstrap code
-                        * The HTML page loads the CSS and JavaScript resources, which contains the application code
-                        * A JavaScript callback function is the entry-point to render the application
-                        * HTML page dynamic; JavaScript, CSS and images static
-                        * ETag-Header for application code, Max-Age Header for design/layout resources (CSS, images)
-                    </script>
-                </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## Rule 1: Make fewer HTTP requests
 
-                <section data-markdown>
-                    <script type="text/template">
-                        ## Pros of plain old JavaScript<br> web-apps
+                            * Very important!!!
+                            * Take advantage of proxy and browser caches - HTTP/1.1 supports additional caching directives
+                            * Use max 6 requests for the initial page load - HTTP/1.1 persistent connections
+                            * Use image sprites or font icons
+                            * Use inlined resources
+                            * Base64 encoded images
+                            * HTML-embedded JavaScript and CSS
+                            * Combine JavaScript und CSS files
+                            * Avoid HTTP redirects
+                            * Offline apps
+                        </script>
+                    </section>
 
-                        * Strong seperation of frontend and backend (necessarily)
-                        * Frontend and backend can be developed independenly
-                        * “Headless” testing of the backend
-                        * Reuse of web-services (for other distribution channels)
-                        * Development in the interpreter language of the browser (no abstraction, no cross-compiles)
-                        * High learning curve (JavaScript per se)
-                        * Numerous existing JavaScript libraries
-                        * All features of HTML/JavaScript are available, no barriers because of frameworks
-                        * HTML is rendered in browser (DOM manipulation) -> easy to debug and deploy (static files – only a browser referesh away :)
-                    </script>
-                </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## Browser caching
 
-                <section>
-                    <h2>Develop-build-deploy cycles</h2>
-                    <img width="600px" src="images/code-is-compiling.png" alt="Code is compiling">
-                </section>
+                            * Caching directives in HTTP/1.1<br><small><http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html></small>
+                            * Expiration model [§13.2]: Avoid requests to the server
+                                * Expires [§14.21]
+                                * Cache-Control max-age [§14.9]
+                            * Validation model [§13.3]: Revalidate with server
+                                * Conditional requests
+                                * Last-modified [§14.29] (If-Modified-Since, If-Unmodified-Since)
+                                * Entity tag [§14.19] (ETag – If-Match, If-None-Match)
+                        </script>
+                    </section>
 
-                <section data-markdown>
-                    <script type="text/template">
-                        ## Develop-build-deploy cycles
+                    <section>
+                        <h2>Image sprites</h2>
 
-                        * Building and deploying takes a lot of time, especially for developers where the build is a synchronous task
-                        * A lot of frameworks with inconvenient and long-running build and deployment jobs exist
-                        * This results in less development speed and loss in productivity
-                        * With HTML/JavaScript the build/deployment task is to press the  reload button in the browser
-                        * No byte compilation necessary
-                        * No build artefacts necessary
-                        * No restart of the application necessary
-                    </script>
-                </section>
+                        <img height="350" style="float:right" src="images/image-sprite.png" alt="Image Sprite">
 
-                <section data-markdown>
-                    <script type="text/template">
-                        ## jQuery
+                        <ul>
+                            <li>A tiling of regular polygons (in two dimensions)[…]<br>is called a tessellation<br><small><a href="http://mathworld.wolfram.com/Tessellation.html">http://mathworld.wolfram.com/Tessellation.html</a></small></li>
+                            <li>Combines several images to a single image</li>
+                            <li>Only a single HTTP request is necessary</li>
+                            <li>Browser must not parse and render each image</li>
+                            <li>2D Strip Packing Problem (SPP)<br><small><a href="http://dip.sun.ac.za/~vuuren/repositories/levelpaper/spp%5B1%5D.htm">http://dip.sun.ac.za/~vuuren/repositories/levelpaper/spp%5B1%5D.htm</a></small></li>
+                            <li>WebSpriteGenerator – Colour-Groups<br><small><a href="http://westhoffswelt.de/projects/web-sprite-generator.html">http://westhoffswelt.de/projects/web-sprite-generator.html</a></small></li>
+                        </ul>
+                    </section>
 
-                        * Developed by John Resig<br><small><http://ejohn.org></small>
-                        * About ~30 KB compressed
-                        * Large community<br><small><http://trends.builtwith.com/javascript/JQuery></small>
-                        * De facto standard in web development
-                        * Extendable with plug-ins
-                        * jQuery object: $
-                        * Method chaining<br><small><http://importantshock.wordpress.com/2009/01/18/jquery-is-a-monad/></small>
-                        * Selectors, attributes, traversing, manipulation, CSS, events, effects, ajax, utilities
-                    </script>
-                </section>
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## Rule 2: Minimize the content size
 
-                <section>
-                    <h2>jQuery Usage-Trends</h2>
-                    <img src="images/jquery-usage-trends.png" alt="jQuery Usage Trends">
-                </section>
+                            * Reduce the size of HTML, JavaScript and CSS files
+                            * CSS and JavaScript minification/compression
+                            * Accept Gzip/deflate content encoding
+                            * Optimize images
+                                * <code>$ pngcrush --brute image.png output.png</code>
+                                * <code>$ jpegtran --optimize image.jpg > output.jpg</code>
+                            * Reduce the size of the HTTP headers, because they are delivered uncompressed (for example session cookies)
+                        </script>
+                    </section>
 
-                <section>
-                    <h2>jQuery - Code Example</h2>
-                    <pre>
-                        <code contenteditable>
-                            $(&quot;#divTest2:visible&quot;)
-                            .text(&quot;Hello World&quot;)
-                            .removeClass(&quot;blue&quot;)
-                            .addClass(&quot;bold&quot;)
-                            .css(&quot;background-color&quot;, &quot;red&quot;)
-                            .click(function() {
-                            alert(&quot;Handler for .click() called.&quot;);
-                            })
-                            .wrap(&quot;&lt;div&gt;&quot;);
-                             </code>
-                    </pre>
-                </section>
+                    <section>
+                        <h2>JavaScript compression (1)</h2>
 
-                <section data-markdown>
-                    <script type="text/template">
-                        ## Web application performance
+                        <img height="500" style="float:right" src="images/good-code-reviews.png" alt="Howto make good code reviews">
 
-                        * Books you must read:
-                            * Steve Souders: High Performance Web Sites, O‘Reilly, 2007.
-                            * Steve Souders: Even Faster Web Sites, O‘Reilly, 2009.
-                        * Slow sites:
-                            * Decreased revenues
-                            * Frustrated users
-                            * Negative brand perceptions
-                        * Basic rules:
-                            * Make fewer HTTP requests
-                            * Reduce the content-size
-                    </script>
-                </section>
+                        <ul>
+                            <li>Deployment of the source-code without<br>comments</li>
+                            <li>Find syntax errors during development</li>
+                            <li>Identify potentially buggy code patterns<br>(browser specific)</li>
+                            <li>Code optimizations are possible</li>
+                            <li>Licence headers must be untouched</li>
+                            <li>Sourcecode reduction > 50%</li>
+                        </ul>
+                    </section>
 
-                <section data-markdown>
-                    <script type="text/template">
-                        ## Rule 1: Make fewer HTTP requests
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## JavaScript obfuscation (2)
 
-                        * Very important!!!
-                        * Take advantage of proxy and browser caches - HTTP/1.1 supports additional caching directives
-                        * Use max 6 requests for the initial page load - HTTP/1.1 persistent connections
-                        * Use image sprites or font icons
-                        * Use inlined resources
-                        * Base64 encoded images
-                        * HTML-embedded JavaScript and CSS
-                        * Combine JavaScript und CSS files
-                        * Avoid HTTP redirects
-                        * Offline apps
-                    </script>
-                </section>
+                            * Obufscation = make it unreadable, hide the details
+                            * Security- and copyright-concern
+                            * Protects your code
+                            * Remove sourcecode comments, whitespaces, line breaks
+                            * Rename (local/global) variable- and function-names
+                            * Dead code removal, add dummy-statements
+                            * JavaScript compressors: JSMin, Closure Compiler, YUI Compressor, ...
+                            <small>
+                                <https://developers.google.com/closure/compiler/><br>
+                                <http://developer.yahoo.com/yui/compressor/><br>
+                                <http://crockford.com/javascript/jsmin>
+                            </small>
 
-                <section data-markdown>
-                    <script type="text/template">
-                        ## Browser caching
+                            <small><code><span style="font-size:12px">...function str(aq,ar){var i,k,v,length,as=ak,at,au=ar[aq];if(au && typeof au === 'object' && typeof au.toJSON === 'function'){au=au.toJSON(aq);} if(typeof ao === 'function'){au=ao.call(ar,aq,au);} switch(typeof au){case 'string': {return quote(au);} case 'number': {return (isFinite(au) ? String(au) : 'null');} case 'boolean': {} case 'null': {return String(au);} case 'object': {if(! au){return 'null';} ak+=am;at=[];if(Object.prototype.toString.apply(au) === '[object Array]'){length=au.length;for(i=0;i < length;i+=1){at[i]=str(i,au) || 'null';}v=(at.length === 0 ? '[]' : (ak ? '[\n' + ak + at.join(',\n' + ak) + '\n' + as + ']' : '[' + at.join(',') + ']'));ak=as;return v;} if(ao && typeof ao === 'object'){length=ao.length;for(i=0;i < length;i+=1){k=ao[i];if(typeof k === 'string'){v=str(k,au);if(v){at.push(quote(k) + ((ak ? ': ' : ':')) + v);} } }} else {for(k in...</span></code></small>
+                        </script>
+                    </section>
 
-                        * Caching directives in HTTP/1.1<br><small><http://www.w3.org/Protocols/rfc2616/rfc2616-sec13.html></small>
-                        * Expiration model [§13.2]: Avoid requests to the server
-                            * Expires [§14.21]
-                            * Cache-Control max-age [§14.9]
-                        * Validation model [§13.3]: Revalidate with server
-                            * Conditional requests
-                            * Last-modified [§14.29] (If-Modified-Since, If-Unmodified-Since)
-                            * Entity tag [§14.19] (ETag – If-Match, If-None-Match)
-                    </script>
-                </section>
-
-                <section>
-                    <h2>Image sprites</h2>
-
-                    <img height="350" style="float:right" src="images/image-sprite.png" alt="Image Sprite">
-
-                    <ul>
-                        <li>A tiling of regular polygons (in two dimensions)[…]<br>is called a tessellation<br><small><a href="http://mathworld.wolfram.com/Tessellation.html">http://mathworld.wolfram.com/Tessellation.html</a></small></li>
-                        <li>Combines several images to a single image</li>
-                        <li>Only a single HTTP request is necessary</li>
-                        <li>Browser must not parse and render each image</li>
-                        <li>2D Strip Packing Problem (SPP)<br><small><a href="http://dip.sun.ac.za/~vuuren/repositories/levelpaper/spp%5B1%5D.htm">http://dip.sun.ac.za/~vuuren/repositories/levelpaper/spp%5B1%5D.htm</a></small></li>
-                        <li>WebSpriteGenerator – Colour-Groups<br><small><a href="http://westhoffswelt.de/projects/web-sprite-generator.html">http://westhoffswelt.de/projects/web-sprite-generator.html</a></small></li>
-                    </ul>
-                </section>
-
-                <section data-markdown>
-                    <script type="text/template">
-                        ## Rule 2: Minimize the content size
-
-                        * Reduce the size of HTML, JavaScript and CSS files
-                        * CSS and JavaScript minification/compression
-                        * Accept Gzip/deflate content encoding
-                        * Optimize images
-                            * <code>$ pngcrush --brute image.png output.png</code>
-                            * <code>$ jpegtran --optimize image.jpg > output.jpg</code>
-                        * Reduce the size of the HTTP headers, because they are delivered uncompressed (for example session cookies)
-                    </script>
-                </section>
-
-                <section>
-                    <h2>JavaScript compression (1)</h2>
-
-                    <img height="500" style="float:right" src="images/good-code-reviews.png" alt="Howto make good code reviews">
-
-                    <ul>
-                        <li>Deployment of the source-code without<br>comments</li>
-                        <li>Find syntax errors during development</li>
-                        <li>Identify potentially buggy code patterns<br>(browser specific)</li>
-                        <li>Code optimizations are possible</li>
-                        <li>Licence headers must be untouched</li>
-                        <li>Sourcecode reduction > 50%</li>
-                    </ul>
-                </section>
-
-                <section data-markdown>
-                    <script type="text/template">
-                        ## JavaScript obfuscation (2)
-
-                        * Obufscation = make it unreadable, hide the details
-                        * Security- and copyright-concern
-                        * Protects your code
-                        * Remove sourcecode comments, whitespaces, line breaks
-                        * Rename (local/global) variable- and function-names
-                        * Dead code removal, add dummy-statements
-                        * JavaScript compressors: JSMin, Closure Compiler, YUI Compressor, ...
-                        <small>
-                            <https://developers.google.com/closure/compiler/><br>
-                            <http://developer.yahoo.com/yui/compressor/><br>
-                            <http://crockford.com/javascript/jsmin>
-                        </small>
-
-                        <small><code><span style="font-size:12px">...function str(aq,ar){var i,k,v,length,as=ak,at,au=ar[aq];if(au && typeof au === 'object' && typeof au.toJSON === 'function'){au=au.toJSON(aq);} if(typeof ao === 'function'){au=ao.call(ar,aq,au);} switch(typeof au){case 'string': {return quote(au);} case 'number': {return (isFinite(au) ? String(au) : 'null');} case 'boolean': {} case 'null': {return String(au);} case 'object': {if(! au){return 'null';} ak+=am;at=[];if(Object.prototype.toString.apply(au) === '[object Array]'){length=au.length;for(i=0;i < length;i+=1){at[i]=str(i,au) || 'null';}v=(at.length === 0 ? '[]' : (ak ? '[\n' + ak + at.join(',\n' + ak) + '\n' + as + ']' : '[' + at.join(',') + ']'));ak=as;return v;} if(ao && typeof ao === 'object'){length=ao.length;for(i=0;i < length;i+=1){k=ao[i];if(typeof k === 'string'){v=str(k,au);if(v){at.push(quote(k) + ((ak ? ': ' : ':')) + v);} } }} else {for(k in...</span></code></small>
-                    </script>
-                </section>
-
-                <section>
-                    <h2>Content-size minimization</h2>
-                    <img src="images/compression-content-size.png" alt="Content-size minimization">
+                    <section>
+                        <h2>Content-size minimization</h2>
+                        <img src="images/compression-content-size.png" alt="Content-size minimization">
+                    </section>
                 </section>
 
                 <!-- <section data-markdown>

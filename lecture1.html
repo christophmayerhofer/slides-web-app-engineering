@@ -235,7 +235,22 @@
                     </section>
                     <section>
                         <h2>Greenlet flow</h2>
-                        <img height="400" src="images/greenlet-flow.gif" alt="Greenlet Flow">
+                        <div style="width: 40%; float: left">
+                            <pre>
+                                <code>
+def generator():
+    yield 1
+    yield 2
+    yield 3
+
+>>> [x for x in generator()]
+[1, 2, 3]
+                                </code>
+                            </pre>
+                        </div>
+                        <div style="width: 60%; float: right">
+                            <img height="400" src="images/greenlet-flow.gif" alt="Greenlet Flow">
+                        </div>
                     </section>
 
                     <section>
@@ -734,9 +749,9 @@ Accept: application/json
                         <script type="text/template">
                             ## Lessions learned
 
+                            * REST allows loose coupling of client and server
                             * REST is useful for data-driven applications (CRUD)
                             * REST is useful for public services (web based)
-                            * REST allows loose coupling of client and server
                             * Lot of tools available (because of HTTP)
                             * No transaction support
                             * REST is not a standard, so various implementations with varying degrees exist
