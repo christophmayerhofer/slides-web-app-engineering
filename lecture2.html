@@ -202,6 +202,19 @@
                         <div style="clear: both;"/>
                     </section>
 
+                    <section data-markdown>
+                        <script type="text/template">
+                            ## JavaScript supports ...
+
+                            * First-class functions and Closures
+                            * Prototype-oriented Inheritance (OOP)
+                            * Modules, simulated with objects
+                            * Exception handling (try/catch)<br><br>
+
+                            * ... But also bad design decisions made in the early days of JavaScript<br>(for example global variables)
+                        </script>
+                    </section>
+
                     <section>
                         <h2>JavaScript - The Bad Parts</h2>
 
@@ -517,30 +530,69 @@ function foo() {
                     <section>
                         <h2>jQuery - Code Example</h2>
                         <pre>
-                            <code contenteditable>
-                                $(&quot;#divTest2:visible&quot;)
-                                .text(&quot;Hello World&quot;)
-                                .removeClass(&quot;blue&quot;)
-                                .addClass(&quot;bold&quot;)
-                                .css(&quot;background-color&quot;, &quot;red&quot;)
-                                .click(function() {
-                                alert(&quot;Handler for .click() called.&quot;);
-                                })
-                                .wrap(&quot;&lt;div&gt;&quot;);
+                            <code>
+$(&quot;#divTest2:visible&quot;)
+    .text(&quot;Hello World&quot;)
+    .removeClass(&quot;blue&quot;)
+    .addClass(&quot;bold&quot;)
+    .css(&quot;background-color&quot;, &quot;red&quot;)
+    .click(function() {
+        alert(&quot;Handler for .click() called.&quot;);
+    })
+    .wrap(&quot;&lt;div&gt;&quot;);
                                  </code>
                         </pre>
                     </section>
                 </section>
 
-                <section data-markdown>
-                    <script type="text/template">
-                        ## Components
+                <section>
+                    <section>
+                        <h2>Today: Component-oriented Frameworks</h2>
 
-                        * HTML was not designed to develop components
-                        * Object-oriented Model
-                        * Isolation
-                        * Reuse
-                    </script>
+                        <ul>
+                            <li>HTML was not designed to develop components</li>
+                            <li>Object-oriented Model: Behaviour, Isolation, Interface, Reuse</li>
+                            <li>Angular, Ember, Backbone, React, Web Components (Polymer)</li>
+                        </ul>
+
+                        <img width="40%" src="images/components.jpg" alt="UI Components">
+                    </section>
+
+                    <section>
+                        <h2>Example: Web Components</h2>
+                        <pre><code>
+&lt;dom-module id="p-form-input-text"&gt;
+    &lt;template&gt;
+        &lt;div class="form-group form-label-input"&gt;
+            &lt;label class="control-label" for="input"&gt;[[label]]&lt;/label&gt;
+            &lt;input id="input" name="input" type="[[type]]" disabled="[[disabled]]"
+                   required="[[required]]" maxlength="[[maxlength]]" value="{{value}}"/&gt;
+        &lt;/div&gt;
+    &lt;/template&gt;
+
+    &lt;script&gt;
+        (function() {
+            Polymer({
+                is: 'p-form-input-text',
+                properties: {
+                    type: String,
+                    required: Boolean,
+                    maxlength: Number,
+                    value: Object,
+                    disabled: Boolean
+                },
+                ready: function() {
+                    this.$.input.value = "foo";
+                }
+            });
+        })();
+    &lt;/script&gt;
+&lt;/dom-module&gt;
+
+&lt;p-form-input-text label="Nachname" required="true" maxlength="100"
+                   value="{{person.nachname}}"/&gt;
+               </code></pre>
+                    </section>
                 </section>
 
                 <section>
